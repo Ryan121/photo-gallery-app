@@ -1,0 +1,13 @@
+.container__gallery{
+    background: teal;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.gallery_item{
+    background: gray;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    border: 1px solid transparent;
+}
