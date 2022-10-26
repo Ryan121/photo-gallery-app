@@ -1,0 +1,26 @@
+{% extends 'photo_app/main.html' %}
+
+{% load static %}
+
+{% block content %} 
+
+<section>
+    <div class="container container__photo">
+
+        {% comment %} {% for image in images %} {% endcomment %}
+
+        <div class="photo_item">
+            <div class="photo_item_inner">
+                <h3>Hello</h3>
+                <a href="{% url 'gallery' %}" class="gallery_button">Go Back</a>
+                <img class="img_photo_format"
+                    {% comment %} src="https://www.tripsavvy.com/thmb/qcJHtd7zUUl5lDEgIg027X1V4Ao=/2078x1442/filters:fill(auto,1)/the-big-ben-in-london-and-the-house-of-parliament-957174246-5c94051846e0fb0001ac139d.jpg" {% endcomment %}
+                    src="{{ image.image.url }}"
+                    alt="Card Image">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %} 

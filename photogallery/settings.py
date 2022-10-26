@@ -22,8 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
-    SECRET_KEY = f.read().strip()
+# with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
+#     SECRET_KEY = f.read().strip()
+SECRET_KEY = 'django-insecure-qfijf2sbh%d92%q!lxbk^^m)sxa1-bh+*l%7!nd%j61(f-z3at'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -106,11 +107,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 STATIC_URL = "/static/"
+MEDIA_URL = "/media/"
 # STATIC_ROOT = BASE_DIR / "static"
 
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, 'static')
 ]
+
+MEDIA_ROOT = BASE_DIR / 'static/images'
 
 
 

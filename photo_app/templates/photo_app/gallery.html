@@ -1,42 +1,70 @@
+{% extends 'photo_app/main.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Gallery</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
-        <!-- CSS only -->
- </head>
-    <body>
-        
-        <section>
-            <div class="container container__gallery">
+{% block content %} 
 
-                <div class="gallery_item">
-                    <h3>Hello</h3>
-                </div>
+<section>
 
-                <div class="gallery_item">
-                    <h3>Mareen</h3>
-                </div>
+    <div class="container container__global">
 
-                <div class="gallery_item">
-                    <h3>Stevey Nugs</h3>
-                </div>
+        <div class="gallery_menu">
+            
+        </div>
 
-                
+        <div class="gallery_menu">
+
+            <div class="bespoke-button-container">
+                <a href="{% url 'upload_photo' %}" class="bespoke-menu-button">Add Photo</a>
+                <a href="{% url 'photo' 0 %}" class="bespoke-menu-button">Bulk Photo Add</a>
             </div>
-        </section>
 
-        
-        <script src="" async defer></script>
-    </body>
-</html>
+            
+            
+
+            <div class="header-styling"><h3>Categories</h3></div>
+            <hr class="list-block">
+            <ul>
+                <li class="list-item">
+                    <a href="{% url 'gallery' %}">
+                        All
+                    </a>
+                </li>
+                {% for list_item in master_categories %}
+                    <li class="list-item">
+                        <a href="{% url 'gallery' %}?category={{list_item.name}}">
+                            {{list_item}}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="container__gallery">
+
+            {% for image in images %}
+
+            <div class="gallery_item">
+                <div class="gallery_item_inner">
+
+                    <img class="img_gallery_format"
+                        {% comment %} src="https://www.tripsavvy.com/thmb/qcJHtd7zUUl5lDEgIg027X1V4Ao=/2078x1442/filters:fill(auto,1)/the-big-ben-in-london-and-the-house-of-parliament-957174246-5c94051846e0fb0001ac139d.jpg" {% endcomment %}
+                        src="{{ image.image.url }}"
+                        alt="Card Image">
+
+                    Categories: {{ image.category.name }}
+                </div>
+                <br>
+                <a href="{% url 'photo' image.id %}" class="gallery_button">View</a>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+    <br>
+
+</section>
+
+{% endblock %} 

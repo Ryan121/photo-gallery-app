@@ -1,0 +1,40 @@
+{% extends 'photo_app/main.html' %}
+
+{% load static %}
+
+{% block content %} 
+
+<section>
+    <div class="container container__uploadform">
+        <a href="{% url 'gallery' %}" class="gallery_button">Go Back</a>
+        <form method='POST' class='formwidth' enctype='multipart/form-data'>
+            {% csrf_token %}
+            <div class="input-group">
+                <div class="input-field">
+                    <p>Category: </p>
+                </div>
+                {{form.category}}
+            </div>
+            <hr>
+            <div class="input-group">
+                <div class="input-field">
+                    <p>Image Upload: </p>
+                </div>
+                {{form.image}}
+            </div>
+            <hr>
+            <div class="input-group">
+                <div class="input-field">
+                    <p>Description: </p>
+                </div>
+                {{form.description}}
+            </div>
+            <hr>
+
+            <button class="" type="submit"><div class="">Submit</div></button>
+        </form>
+
+    </div>
+</section>
+
+{% endblock %} 
