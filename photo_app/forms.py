@@ -1,11 +1,11 @@
 from django import forms
 from django.forms import NumberInput, TextInput, ModelForm
 from django.forms import Textarea, Select
-from .models import Photo, Master_Category
+from .models import Photo, Category
 
 class ImageUploadForm(ModelForm):
 
-    category = forms.ModelChoiceField(queryset=Master_Category.objects.all(),
+    category = forms.ModelChoiceField(queryset=Category.objects.all(),
                                            required=False,
                                            widget=forms.Select(attrs={'class': "userform-control"}))
 

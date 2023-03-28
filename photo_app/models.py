@@ -2,7 +2,7 @@ from email.mime import image
 from django.db import models
 
 # Create your models here.
-class Master_Category(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
 
     class Meta:
@@ -12,7 +12,7 @@ class Master_Category(models.Model):
         return self.name
 
 class Photo(models.Model):
-    category = models.ForeignKey(Master_Category, on_delete=models.SET_NULL, null=True, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(null=False, blank=False)
     description = models.TextField()
 

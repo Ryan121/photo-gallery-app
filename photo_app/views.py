@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Photo, Master_Category
+from .models import Photo, Category
 from .forms import ImageUploadForm
 
 # Create your views here.
@@ -12,7 +12,7 @@ def gallery(request):
     else:
         images = Photo.objects.filter(category__name=category)
 
-    master_categories = Master_Category.objects.all()
+    master_categories = Category.objects.all()
 
     context = {'images': images, 'master_categories': master_categories}
 
